@@ -40,22 +40,21 @@ public class SendMailUtil {
 			//We should Probably throw an error here. 
 			host = "";
 		}
-
         // Get system properties
         Properties properties = System.getProperties();
 
         // Setup mail server
         //If sender is "@yahoo.com"
-	    if(host.equals("smtp.yahoo.com") ) {
+	    //if(host.equals("smtp.yahoo.com") ) {
 	        properties.put("mail.smtp.host", host);
 	        properties.put("mail.smtp.port", "465");
 	        properties.put("mail.smtp.ssl.enable", "true");
 	        properties.put("mail.smtp.auth", "true");
 	        properties.put("mail.smtp.starttls.enable", "true");
-        }
+        //}
         
         //If sender is "@gmail.com"
-        if(host.equals("smtp.gmail.com")) {
+	    if(host.equals("smtp.gmail.com")) {
         	properties.put("mail.smtp.host", host);
             properties.put("mail.smtp.port", "465");
             properties.put("mail.smtp.ssl.enable", "true");
@@ -63,7 +62,7 @@ public class SendMailUtil {
         }
         
         //If sender is "@hotmail.com or @live.com"
-        if(host.equals("smtp-mail.outlook.com")) {
+	    if(host.equals("smtp-mail.outlook.com")) {
         	properties.put("mail.smtp.host", host);
             properties.put("mail.smtp.port", "587");
             properties.put("mail.smtp.ssl.enable", "false");
