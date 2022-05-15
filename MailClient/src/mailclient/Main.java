@@ -1,5 +1,6 @@
 package mailClient;
 
+import javafx.geometry.Insets;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -87,7 +88,7 @@ public class Main extends Application {
 
 
         VBox vbox = new VBox(10, serverHB, usernameHB, passwordHB, recipientHB, subjectHB, messageHB, cancel, send);
-       
+        vbox.setPadding(new Insets(10));
       
         //vbox.setAlignment(Pos.CENTER);
 
