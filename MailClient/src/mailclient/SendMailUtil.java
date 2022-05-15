@@ -16,7 +16,8 @@ public class SendMailUtil {
 	private String subject; //Subject of email
 	private String text; //Body of email
 	private String smtpServer; //Body of email
-	public SendMailUtil(String smtp, String recipient, String senderEmail, String senderPassword, String subject, String text) {
+	
+        public SendMailUtil(String smtp, String recipient, String senderEmail, String senderPassword, String subject, String text) {
 		smtpServer = smtp;
 		to = recipient;
 		from = senderEmail;
@@ -56,9 +57,10 @@ public class SendMailUtil {
         //If sender is "@gmail.com"
 	    if(host.equals("smtp.gmail.com")) {
         	properties.put("mail.smtp.host", host);
-            properties.put("mail.smtp.port", "465");
+            properties.put("mail.smtp.port", "587");
             properties.put("mail.smtp.ssl.enable", "true");
             properties.put("mail.smtp.auth", "true");
+            properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
         }
         
         //If sender is "@hotmail.com or @live.com"

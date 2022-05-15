@@ -91,18 +91,10 @@ public class Main extends Application {
       
         //vbox.setAlignment(Pos.CENTER);
 
-        Scene scene = new Scene(vbox, 500, 300);
+        Scene scene = new Scene(vbox, 500, 600);
         stage.setScene(scene);
         stage.show();
-
-        
-
-
     }
-
-
-
-
     
     public static void main(String[] args) {
         launch(args);
