@@ -42,17 +42,8 @@ public class RetrieveMail {
                 Message message = email[i];
                 Address[] toAddress = 
                 message.getRecipients(Message.RecipientType.TO);
-                System.out.println();  
-                //System.out.println("Email " + (i+1) + "-");  
                 System.out.println("Subject - " + message.getSubject());  
-                System.out.println("From - " + message.getFrom()[0]); 
- 
-                //System.out.println("To - "); 
-                //for(int j = 0; j < toAddress.length; j++){
-                  //  System.out.println(toAddress[j].toString());
-                //}
-                //System.out.println("Text - " + 
-		   //message.getContent().toString());  
+                System.out.println("From - " + message.getFrom()[0]);
             }
  
             folder.close(false);
@@ -123,23 +114,10 @@ public class RetrieveMail {
             email = folder.getMessages();
             contents += "Subject - " + email[index].getSubject() + "\n";
             contents += "From - " + email[index].getFrom()[0] + "\n";
-            /**
-            Multipart multipart = (Multipart)email[index].getContent();
-            String actual = "";
-            
-            for (int i = 0; i < multipart.getCount(); i++) {
-                BodyPart bodypart = multipart.getBodyPart(i);
-                InputStream stream = bodypart.getInputStream();
-                BufferedReader br = new BufferedReader(new InputStreamReader(stream));
-                while(br.ready()) {
-                    actual += br.readLine();
-                }
-            }
-            * */
-            //contents += "\n\n" + actual;
             contents += "\n\n" + email[index].getContent().toString();
             folder.close(false);
             mail.close();
+            System.out.println("done");
             return contents;
         }
         catch (Exception e){
