@@ -142,6 +142,7 @@ public class Select extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         SendMail mail = new SendMail("Gmail", recField.getText(), this.from, this.senderPass, subjectField.getText(), message.getText());
+        mail.sendEmail();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

@@ -17,6 +17,7 @@ public class RetrieveMail {
         props.put("mail.store.protocol", "pop3");
         
         Session session = Session.getInstance(props);
+        //session.setDebug(true);
         try {
             Store mail = session.getStore(storeType);
             mail.connect(host, from, senderPass);
@@ -38,7 +39,7 @@ public class RetrieveMail {
  
                 //System.out.println("To - "); 
                 //for(int j = 0; j < toAddress.length; j++){
-                    //System.out.println(toAddress[j].toString());
+                  //  System.out.println(toAddress[j].toString());
                 //}
                 //System.out.println("Text - " + 
 		   //message.getContent().toString());  

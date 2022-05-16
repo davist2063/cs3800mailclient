@@ -57,12 +57,16 @@ public class SendMailUtil {
         //If sender is "@gmail.com"
 	    if(host.equals("smtp.gmail.com")) {
         	properties.put("mail.smtp.host", host);
-            properties.put("mail.smtp.port", "587");
-            properties.put("mail.smtp.ssl.enable", "true");
-            properties.put("mail.smtp.auth", "true");
-            properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+        properties.put("mail.smtp.host", "smtp.gmail.com");
+        properties.put("mail.smtp.port", "465");
+        properties.put("mail.smtp.ssl.enable", "true");
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.ssl.protocols", "TLSv1.2");
+        properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+        properties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+        properties.put("mail.smtp.socketFactory.fallback", "true");
         }
-        
+        /**
         //If sender is "@hotmail.com or @live.com"
 	    if(host.equals("smtp-mail.outlook.com")) {
         	properties.put("mail.smtp.host", host);
@@ -71,6 +75,7 @@ public class SendMailUtil {
             properties.put("mail.smtp.auth", "true");
         	properties.put("mail.smtp.starttls.enable", "true");
         }
+        * */
 
         // Get the Session object.// and pass username and password
         Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
