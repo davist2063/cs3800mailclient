@@ -32,16 +32,16 @@ public class RetrieveMail {
                 Address[] toAddress = 
                 message.getRecipients(Message.RecipientType.TO);
                 System.out.println();  
-                System.out.println("Email " + (i+1) + "-");  
+                //System.out.println("Email " + (i+1) + "-");  
                 System.out.println("Subject - " + message.getSubject());  
                 System.out.println("From - " + message.getFrom()[0]); 
  
-                System.out.println("To - "); 
-                for(int j = 0; j < toAddress.length; j++){
-                    System.out.println(toAddress[j].toString());
-                }
-                System.out.println("Text - " + 
-		   message.getContent().toString());  
+                //System.out.println("To - "); 
+                //for(int j = 0; j < toAddress.length; j++){
+                    //System.out.println(toAddress[j].toString());
+                //}
+                //System.out.println("Text - " + 
+		   //message.getContent().toString());  
             }
  
             folder.close(false);
@@ -52,7 +52,11 @@ public class RetrieveMail {
             System.out.println("Could not retrieve email");
         }
         
-        
+    }
+    
+    public RetrieveMail(String sender, String pass){
+        from = sender;
+        senderPass = pass;
     }
     
     public static void main(String[] args){
