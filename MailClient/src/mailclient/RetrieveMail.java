@@ -1,5 +1,8 @@
 package mailClient;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Properties;
 import javax.mail.*;
 
@@ -88,6 +91,8 @@ public class RetrieveMail {
                 Message message = email[i];
                 matrix[i] = message.getSubject();
             }
+            folder.close(false);
+            mail.close();
             return matrix;
         }
         catch (Exception e){
@@ -95,6 +100,53 @@ public class RetrieveMail {
             System.out.println("Could not retrieve email");
         }
         return matrix;
+    }
+    
+    public String getSpecificEmail(int index){
+        String contents = "";
+        Message[] email= new Message[100];
+        Properties props = new Properties();
+        props.put("mail.pop3.host",host);
+        props.put("mail.pop3.port", 995);
+        props.put("mail.pop3.starttles.enable", "true");
+        props.put("mail.store.protocol", "pop3");
+        
+        Session session = Session.getInstance(props);
+        //session.setDebug(true);
+        try {
+            Store mail = session.getStore(storeType);
+            mail.connect(host, from, senderPass);
+            
+            Folder folder = mail.getFolder("INBOX");
+            folder.open(Folder.READ_ONLY);
+            
+            email = folder.getMessages();
+            contents += "Subject - " + email[index].getSubject() + "\n";
+            contents += "From - " + email[index].getFrom()[0] + "\n";
+            /**
+            Multipart multipart = (Multipart)email[index].getContent();
+            String actual = "";
+            
+            for (int i = 0; i < multipart.getCount(); i++) {
+                BodyPart bodypart = multipart.getBodyPart(i);
+                InputStream stream = bodypart.getInputStream();
+                BufferedReader br = new BufferedReader(new InputStreamReader(stream));
+                while(br.ready()) {
+                    actual += br.readLine();
+                }
+            }
+            * */
+            //contents += "\n\n" + actual;
+            contents += "\n\n" + email[index].getContent().toString();
+            folder.close(false);
+            mail.close();
+            return contents;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            System.out.println("Could not retrieve email");
+        }
+        return contents;
     }
     
     public static void main(String[] args){
